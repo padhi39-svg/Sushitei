@@ -1,0 +1,316 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Flip7 Design System */
+  --pos-primary: #2BA8A2;
+  --pos-primary-hover: #1E8C86;
+  --pos-primary-light: #E8F6F5;
+  --pos-gold: #FFD23F;
+  --pos-gold-hover: #E6B800;
+  --pos-coral: #EF6C4A;
+  --pos-coral-hover: #D45233;
+  --pos-sky: #5DADE2;
+  --pos-sky-hover: #4A9FD1;
+  --pos-dark: #3C3C3C;
+  --pos-text: #3C3C3C;
+  --pos-text-secondary: #8E8E8E;
+  --pos-bg: #EFF8F7;
+  --pos-card-bg: #FFFFFF;
+  --pos-border: #E8F6F5;
+  --pos-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --pos-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.08);
+  
+  /* Legacy gradients */
+  --sidebar-gradient: linear-gradient(180deg, #1e3a8a 0%, #0ea5e9 100%);
+  --header-gradient: linear-gradient(90deg, #22c55e 0%, #0ea5e9 100%);
+}
+
+html, body, :root {
+  height: 100%;
+}
+
+body {
+  @apply text-slate-800 text-sm;
+  background-color: #EFF8F7;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* POS Theme Utilities */
+.pos-primary-bg { background-color: var(--pos-primary); }
+.pos-primary-text { color: var(--pos-primary); }
+.pos-dark-text { color: var(--pos-dark); }
+.pos-secondary-text { color: var(--pos-text-secondary); }
+.pos-card { @apply bg-white rounded-2xl shadow-sm border border-[#E8F6F5]; }
+
+/* Flip7 Glow Shadows */
+.shadow-teal-glow { box-shadow: 0 4px 20px var(--pos-primary-glow, rgba(43, 168, 162, 0.3)); }
+.shadow-gold-glow { box-shadow: 0 4px 20px rgba(255, 210, 63, 0.35); }
+.shadow-coral-glow { box-shadow: 0 4px 20px rgba(239, 108, 74, 0.35); }
+.shadow-sky-glow { box-shadow: 0 4px 16px rgba(93, 173, 226, 0.3); }
+
+/* Dashed section border */
+.section-divider { @apply border-b-2 border-dashed; border-color: rgba(43, 168, 162, 0.3); }
+
+.report-page {
+  @apply w-full max-w-[1520px] mx-auto space-y-3;
+}
+.report-title {
+  @apply text-base md:text-lg font-bold text-slate-800;
+}
+.report-subtitle {
+  @apply text-[11px] text-slate-600 mt-0.5;
+}
+.report-card {
+  @apply bg-white rounded-lg shadow-sm border border-slate-200;
+}
+.report-card-pad {
+  @apply p-2;
+}
+.report-table-wrapper {
+  @apply w-full max-w-full overflow-x-auto;
+}
+.responsive-report-table-wrapper {
+  -webkit-overflow-scrolling: touch;
+}
+.report-table {
+  @apply text-[10px] w-full min-w-[1200px];
+}
+.report-table thead {
+  @apply sticky top-0 z-10;
+}
+thead[class*="bg-gradient-to-r"] {
+  @apply sticky top-0 z-10;
+}
+.report-table thead th {
+  @apply px-2 py-1 text-left font-semibold whitespace-nowrap text-[10px];
+}
+.report-table tbody td {
+  @apply px-2 py-1 text-[12px] font-semibold;
+}
+.report-table tfoot td {
+  @apply px-2 py-1 text-[10px];
+}
+
+/* Tabel laporan dengan garis vertikal di setiap kolom */
+.report-table.bordered th,
+.report-table.bordered td {
+  @apply border-r border-slate-200;
+}
+.report-table.bordered th:last-child,
+.report-table.bordered td:last-child {
+  @apply border-r-0;
+}
+.report-table.bordered thead th {
+  @apply border-r border-white/30;
+}
+.report-table.bordered thead th:last-child {
+  @apply border-r-0;
+}
+
+@media (max-width: 639px) {
+  .responsive-report-table-wrapper {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .responsive-report-table-wrapper table.report-table {
+    display: block;
+    width: 100% !important;
+    min-width: 0 !important;
+    border-collapse: separate;
+  }
+
+  /* Keep column sort/filter controls reachable as compact, wrapping chips. */
+  .responsive-report-table-wrapper table.report-table thead {
+    display: block;
+    position: static;
+    overflow: visible;
+    margin-bottom: 8px;
+    background: transparent !important;
+  }
+
+  .responsive-report-table-wrapper table.report-table thead tr {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 5px;
+  }
+
+  .responsive-report-table-wrapper table.report-table thead th {
+    display: flex;
+    position: relative;
+    flex: 0 0 auto;
+    align-items: center;
+    min-height: 32px;
+    max-width: 100%;
+    padding: 6px 9px !important;
+    border: 1px solid #dbe5e8 !important;
+    border-radius: 999px;
+    background: #fff !important;
+    color: #334155;
+    font-size: 10px !important;
+    white-space: normal;
+  }
+
+  .responsive-report-table-wrapper table.report-table tbody,
+  .responsive-report-table-wrapper table.report-table tfoot {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .responsive-report-table-wrapper table.report-table tbody tr,
+  .responsive-report-table-wrapper table.report-table tfoot tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 9px 10px;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 2px 7px rgba(15, 23, 42, 0.04);
+  }
+
+  .responsive-report-table-wrapper table.report-table tbody td,
+  .responsive-report-table-wrapper table.report-table tfoot td {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    padding: 0 !important;
+    border: 0 !important;
+    color: #1e293b;
+    font-size: 11px !important;
+    line-height: 1.35;
+    text-align: left !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+  }
+
+  .responsive-report-table-wrapper table.report-table tbody td::before,
+  .responsive-report-table-wrapper table.report-table tfoot td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 2px;
+    color: #64748b;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .responsive-report-table-wrapper table.report-table tbody td:empty,
+  .responsive-report-table-wrapper table.report-table tfoot td:empty {
+    display: none !important;
+  }
+
+  .responsive-report-table-wrapper table.report-table tbody td[colspan],
+  .responsive-report-table-wrapper table.report-table tfoot td[colspan] {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Tabel detail barang - full width, tidak ada min-width (biar muat di mobile) */
+.detail-table { @apply w-full text-[12px]; }
+.detail-table thead th { @apply px-2 py-1.5 text-left text-[11px] font-semibold whitespace-nowrap; }
+.detail-table tbody td { @apply px-2 py-1.5 text-[12px] border-b border-slate-100; }
+
+.container-card {
+  @apply bg-white rounded-xl shadow-sm border border-slate-100;
+}
+
+.rounded-modal {
+  border-radius: 24px;
+}
+
+.rounded-card {
+  border-radius: 16px;
+}
+
+.btn-primary {
+  @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary-600 hover:bg-primary-700 text-white transition-colors text-sm;
+}
+
+.badge {
+  @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600;
+}
+
+.select-teal option {
+  padding: 8px 12px;
+  background: #fff;
+  color: #475569;
+}
+.select-teal option:checked {
+  background: var(--pos-primary);
+  color: #fff;
+}
+
+/* ============ HALAMAN LOGIN ============ */
+.login-root {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background-color: #14532D;
+}
+
+/* Font serif untuk judul/logo (nuansa oriental) */
+.login-root .font-serif {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+}
+
+/* Input form login */
+.login-input {
+  background-color: #FFFFFF;
+  border: 1.5px solid #E5E0D8;
+  color: #1F2937;
+}
+.login-input::placeholder {
+  color: #9CA3AF;
+}
+.login-input:hover {
+  border-color: #CFC7B8;
+}
+.login-input:focus {
+  border-color: var(--pos-primary, #14532D);
+  box-shadow: 0 0 0 3.5px color-mix(in srgb, var(--pos-primary, #14532D) 14%, transparent);
+}
+
+/* Promo landing transitions */
+@keyframes promoFadeSlideIn {
+  from { opacity: 0; transform: translateY(-14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes promoFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes promoScaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-promo-enter {
+  animation: promoFadeSlideIn 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.animate-promo-fade {
+  animation: promoFadeIn 0.5s ease-out;
+}
+.animate-promo-scale {
+  animation: promoScaleIn 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.promo-stagger > * {
+  animation: promoFadeSlideIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.promo-stagger > *:nth-child(1) { animation-delay: 0.08s; }
+.promo-stagger > *:nth-child(2) { animation-delay: 0.16s; }
+.promo-stagger > *:nth-child(3) { animation-delay: 0.24s; }
+.promo-stagger > *:nth-child(4) { animation-delay: 0.32s; }
+.promo-stagger > *:nth-child(5) { animation-delay: 0.40s; }
+.promo-stagger > *:nth-child(6) { animation-delay: 0.48s; }
+
+/* slide for PaketCard */
+.paket-slide-track {
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}

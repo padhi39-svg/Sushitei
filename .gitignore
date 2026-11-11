@@ -1,0 +1,28 @@
+# ===== Dependensi & build =====
+node_modules/
+.next/
+out/
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+
+# ===== Secret =====
+.env
+.env.local
+.env.*.local
+
+# ===== Database backup besar (tidak diunggah) =====
+02112026
+
+# ===== Data internal (tidak diunggah ke repo public) =====
+Data/
+
+# ===== Log & berkas sementara =====
+*.log
+_tmp*
+cleanup-log.txt
+dev-output.log
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+desktop.ini
